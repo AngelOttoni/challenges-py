@@ -24,32 +24,26 @@ print('New salary: {:.2f}'.format(final_value).replace('.',','))
 print('Readjustment received: {:.2f}'.format(readjustment).replace('.',','))
 print('In percentage:: {} %'.format(percentage))
 
-#or
+#
+salario = int(input())
 
-# x = float(input())
-# if x <= 400.00:
-#     s = x * 1.15
-#     r = s - x
-#     p = 15
-# if 400.01 <= x <= 800.00:
-#     s = x * 1.12
-#     r = s - x
-#     p = 12
-# if 800.01 <= x <= 1200.00:
-#     s = x * 1.10
-#     r = s - x
-#     p = 10
-# if 1200.01 <= x <= 2000.00:
-#     s = x * 1.07
-#     r = s - x
-#     p = 7
-# if  x > 2000.00:
-#     s = x * 1.04
-#     r = s - x
-#     p = 4
-# print('Novo salario: {:.2f}'.format(s).replace('.',','))
-# print('Reajuste ganho: {:.2f}'.format(r).replace('.',','))
-# print('Em percentual: {} %'.format(p))
+reajustes = {
+    600: 0.17,
+    900: 0.13,
+    1500: 0.12,
+    2000: 0.10
+}
+
+reajuste = 0.05
+
+for limite, percentual in reajustes.items():
+    if salario <= limite:
+        reajuste = percentual
+        break
+
+novo_salario = salario + (salario * reajuste)
+
+print(f"Novo salario: {novo_salario:.2f}\nReajuste ganho: {salario * reajuste:.2f}\nEm percentual: {reajuste * 100:.0f} %") 
 
 # Salário	            Percentual de Reajuste
 # 0 - 600.00          17%
@@ -58,3 +52,20 @@ print('In percentage:: {} %'.format(percentage))
 # 1500.01 - 2000.00   10%
 # Acima de 2000.00    5%
 
+#o que passou na plataforma:
+
+salario = int(input())
+reajuste = 0
+if salario <= 600:
+    reajuste = 0.17
+elif salario <= 900:
+    reajuste = 0.13
+elif salario <= 1500:
+    reajuste = 0.12
+elif salario <= 2000:
+    reajuste = 0.10
+else:
+    reajuste = 0.05
+       
+novo_salario= (salario *reajuste) + salario 
+print(f"Novo salario: {novo_salario:.2f}\nReajuste ganho: {salario * reajuste:.2f}\nEm percentual: {reajuste * 100:.0f} %") 
